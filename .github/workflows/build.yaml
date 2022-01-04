@@ -53,7 +53,6 @@ jobs:
       run: |
         yarn global add auto
         auto --help
-        auto create-labels
         auto info
 
     # - name: Setup - buildx
