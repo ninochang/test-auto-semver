@@ -52,6 +52,7 @@ jobs:
     - name: Setup Auto
       run: |
         yarn global add auto
+        yarn global add @auto-it/git-tag
         auto shipit
 
     # - name: Setup - buildx
