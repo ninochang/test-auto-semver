@@ -2,6 +2,7 @@
     "baseBranch": "master",
     "prereleaseBranches": ["next", "develop", "staging"],
     "plugins": ["git-tag"],
+    "author": "swag.live <github@swag.live>",
     "labels": [
         {
             "name": "major",
