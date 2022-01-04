@@ -57,7 +57,7 @@ jobs:
     - name: Create version
       run: |
         git fetch --tags
-        NEXT_VERSION=$(auto version)
+        NEXT_VERSION=$(auto version --only-publish-with-release-label)
         echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
         echo $GITHUB_ENV
 
@@ -65,6 +65,11 @@ jobs:
       run: |
         echo 'aaa'
         echo ${{ env.NEXT_VERSION }}
+
+
+    - name: Shipit
+      run: |
+        auto shipit --only-publish-with-release-label --no-changelog
     # - name: Setup - buildx
     #   uses: docker/setup-buildx-action@v1
 
