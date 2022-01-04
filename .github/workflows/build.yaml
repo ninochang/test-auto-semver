@@ -57,7 +57,8 @@ jobs:
     - name: Create version
       run: |
         git fetch --tags
-        auto version
+        NEXT_VERSION=$(auto version)
+        echo $NEXT_VERSION
 
     # - name: Setup - buildx
     #   uses: docker/setup-buildx-action@v1
