@@ -1,4 +1,4 @@
-name: Docker
+name: Semver
 
 on:
   push:
@@ -47,7 +47,7 @@ jobs:
 
     - name: Install Auto
       run: |
-        npm install auto
+        yarn add -D auto
         auto --help
 
 
