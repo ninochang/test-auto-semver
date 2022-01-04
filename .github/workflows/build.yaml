@@ -54,7 +54,6 @@ jobs:
         yarn global add auto
         auto create-labels
         auto info
-        auto version
 
 
     # - name: Setup - buildx
