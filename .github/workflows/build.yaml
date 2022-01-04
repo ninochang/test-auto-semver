@@ -52,8 +52,8 @@ jobs:
     - name: Setup Auto
       run: |
         yarn global add auto
-        auto create-labels
         auto info
+        auto shipit
 
 
     # - name: Setup - buildx
