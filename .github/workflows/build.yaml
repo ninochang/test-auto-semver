@@ -47,7 +47,7 @@ jobs:
 
     - name: Install Auto
       run: |
-        yarn add -D auto
+        yarn global add auto
         auto --help
 
 
