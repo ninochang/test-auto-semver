@@ -52,8 +52,7 @@ jobs:
     - name: Setup Auto
       run: |
         yarn global add auto
-        auto --help
-        auto info
+        auto shipit
 
     # - name: Setup - buildx
     #   uses: docker/setup-buildx-action@v1
