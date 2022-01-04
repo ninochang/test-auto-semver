@@ -2,7 +2,7 @@ name: Semver
 
 on:
   push:
-    branch:
+    branches:
      - master
 
 # concurrency:
