@@ -2,7 +2,7 @@ name: Semver
 
 on:
   push:
-    branches:
+    branch:
      - master
 
 # concurrency:
@@ -52,8 +52,7 @@ jobs:
     - name: Setup Auto
       run: |
         yarn global add auto
-        auto info
-
+        auto --help
 
     # - name: Setup - buildx
     #   uses: docker/setup-buildx-action@v1
