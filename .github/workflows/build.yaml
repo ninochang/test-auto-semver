@@ -53,8 +53,11 @@ jobs:
       run: |
         yarn global add auto
         yarn global add @auto-it/git-tag
+
+    - name: Create version
+      run: |
         git fetch --tags
-        auto shipit
+        auto version
 
     # - name: Setup - buildx
     #   uses: docker/setup-buildx-action@v1
