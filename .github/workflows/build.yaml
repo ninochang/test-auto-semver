@@ -2,6 +2,8 @@ name: Semver
 
 on:
   push:
+    branches:
+     - master
 
 # concurrency:
 #   group: ${{ env.GITHUB_REF_NAME }}
@@ -10,6 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
     # timeout-minutes: 20
     # permissions:
     #   contents: read
@@ -45,10 +49,12 @@ jobs:
     #     apt-get get install -y wget
     #     wget https://github.com/intuit/auto/releases/download/v10.32.5/auto-linux.gz
 
-    - name: Install Auto
+    - name: Setup Auto
       run: |
         yarn global add auto
-        auto --help
+        auto create-labels
+        auto info
+        auto version
 
 
     # - name: Setup - buildx
