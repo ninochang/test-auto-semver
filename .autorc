@@ -1,6 +1,7 @@
 {
     "baseBranch": "master",
     "prereleaseBranches": ["next", "develop", "staging"],
+    "plugins": ["git-tag"],
     "labels": [
         { "releaseType": "major", "name": "Version: Major" },
         { "releaseType": "minor", "name": "Version: Minor" },

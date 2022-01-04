@@ -53,7 +53,6 @@ jobs:
       run: |
         yarn global add auto
         auto --help
-        auto init
         auto info
         auto create-labels
 
