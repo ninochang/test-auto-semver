@@ -61,10 +61,10 @@ jobs:
         echo "NEXT_VERSION=$NEXT_VERSION" >> $GITHUB_ENV
         echo $GITHUB_ENV
 
-  - name: Show version
-    run: |
-      echo 'aaa'
-      echo ${{ env.NEXT_VERSION }}
+    - name: Show version
+      run: |
+        echo 'aaa'
+        echo ${{ env.NEXT_VERSION }}
     # - name: Setup - buildx
     #   uses: docker/setup-buildx-action@v1
 
