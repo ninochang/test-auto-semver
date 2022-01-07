@@ -23,7 +23,7 @@ jobs:
     - name: Test regex
       run: |
         echo hello
-        [[ Anouncement =~ ".+" ]] && echo match
+        [[ Anouncement =~ "(.+)" ]] && echo match
 
     - name: Checkout
       uses: actions/checkout@v2
