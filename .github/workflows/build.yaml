@@ -20,6 +20,11 @@ jobs:
     #   packages: write
 
     steps:
+    - name: Test regex
+      run: |
+        echo hello
+        echo [[ Anouncement =~ ".+" ]]
+
     - name: Checkout
       uses: actions/checkout@v2
       # with:
