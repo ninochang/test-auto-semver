@@ -28,6 +28,6 @@ jobs:
 
     - name: Test verify
       run: |
-        git fetch 
+        git fetch --all --tags
         git tag
         git tag -v v0.2.0
