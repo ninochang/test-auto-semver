@@ -28,6 +28,7 @@ jobs:
 
     - name: Test verify
       run: |
+        gpg --list-secret-keys --keyid-format=long
         git fetch --all --tags
         git tag
         git tag -v v0.2.0
