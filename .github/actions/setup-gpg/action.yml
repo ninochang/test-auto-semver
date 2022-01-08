@@ -14,5 +14,5 @@ runs:
         do
           gpg -a --output $kid.pub --export $kid
           gpg --import $kid.pub
-        end
+        done
         
