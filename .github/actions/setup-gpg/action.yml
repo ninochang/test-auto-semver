@@ -1,0 +1,13 @@
+name: 'Setup gpg'
+description: 'Load public keys'
+inputs:
+  kids:
+    description: 'kids to fetch'
+    required: true
+    default: '${{ env.GPG_KEY_IDS }}'
+runs:
+  using: "composite"
+  steps:
+    - shell: bash 
+      run: |
+        echo ${{ inputs.kids}} | xargs gpg --receive-keys
