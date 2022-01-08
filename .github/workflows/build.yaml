@@ -28,4 +28,5 @@ jobs:
 
     - name: Test verify
       run: |
+        git fetch 
         git tag -v v0.2.0
