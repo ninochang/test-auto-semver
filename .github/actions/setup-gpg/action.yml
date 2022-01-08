@@ -10,6 +10,8 @@ runs:
   steps:
     - shell: bash 
       run: |
+        gpg --list-secret-keys --keyid-format=long
+        echo ${{ inputs.kids }} | xargs gpg --receive-keys
         for kid in ${{ inputs.kids}}
         do
           gpg -a --output $kid.pub --export $kid
