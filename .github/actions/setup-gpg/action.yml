@@ -10,4 +10,9 @@ runs:
   steps:
     - shell: bash 
       run: |
-        echo ${{ inputs.kids}} | xargs gpg --receive-keys
+        for kid in ${{ inputs.kids}}
+        do
+          gpg -a --output $kid.pub --export $kid
+          gpg --import $kid.pub
+        end
+        
