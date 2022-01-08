@@ -4,7 +4,7 @@ inputs:
   kids:
     description: 'kids to fetch'
     required: true
-    default: '${{ env.GPG_KEY_IDS }}'
+    default: '9682378BBACEEDD1'
 runs:
   using: "composite"
   steps:
