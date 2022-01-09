@@ -13,10 +13,6 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       GPG_KEY_IDS: 68D1F79834E9EEE8DBA70F5E9682378BBACEEDD1
-    # timeout-minutes: 20
-    # permissions:
-    #   contents: read
-    #   packages: write
 
     steps:
     - name: Checkout
