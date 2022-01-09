@@ -33,6 +33,7 @@ jobs:
     - name: Check gpg signature
       if: ${{ github.ref_type == 'tag' }}
       run: |
+        git tag -v ${{ github.ref_name }}
         kids=${{ env.GPG_KEY_IDS }}
         log=$(git log tags/${{ github.ref_name }} --show-signature)
         
