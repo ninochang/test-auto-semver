@@ -35,14 +35,12 @@ jobs:
     #     git tag -v v0.2.0
 
     - name: Check gpg signature
+      if: ${{ github.ref_type == tag }}
       run: |
         echo 'ref: ${{ github.ref }}'
         tree .git/refs/
-        echo fetch
-        git fetch --tags
-        tree .git/refs/
         kids=${{ env.GPG_KEY_IDS }}
-        log=$(git log tags/v0.3.0 --show-signature)
+        log=$(git log tags/v0.7.0 --show-signature)
         [[ $log =~([0-9A-F]{40}) ]] && fingerprint=${BASH_REMATCH}
 
         if [[ " ${kids[*]} " == " ${fingerprint} " ]]; then
