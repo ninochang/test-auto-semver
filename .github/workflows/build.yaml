@@ -21,14 +21,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: setup gpg
-      uses: ./.github/actions/setup-gpg
-      with:
-        kids: ${{ env.GPG_KEY_IDS }}
+    # - name: setup gpg
+    #   uses: ./.github/actions/setup-gpg
+    #   with:
+    #     kids: ${{ env.GPG_KEY_IDS }}
 
-    - name: Test verify
+    # - name: Test verify
+    #   run: |
+    #     gpg --list-secret-keys --keyid-format=long
+    #     git fetch --all --tags
+    #     git tag
+    #     git tag -v v0.2.0
+
+    - name: Check gpg signature
       run: |
-        gpg --list-secret-keys --keyid-format=long
-        git fetch --all --tags
-        git tag
-        git tag -v v0.2.0
+        kids=${{ env.GPG_KEY_IDS }}
+        log=$(git log master HEAD~1..v0.3.0 --show-signature)
+        echo $log
