@@ -39,4 +39,11 @@ jobs:
         tree .git/refs/
         kids=${{ env.GPG_KEY_IDS }}
         log=$(git log master HEAD~1..tags/v0.3.0 --show-signature)
-        echo $log
+        [[ $log =~([0-9A-F]{40}) ]] && fingerprint=${BASH_REMATCH}
+
+        if [[ " ${kids[*]} " =~ " ${fingerprint} " ]]; then
+          echo 'true'  
+        else
+          echo 'false'
+        fi
+
