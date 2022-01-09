@@ -36,7 +36,7 @@ jobs:
 
     - name: Check gpg signature
       run: |
-        echo 'ref: ${{ github.ref }}''
+        echo 'ref: ${{ github.ref }}'
         tree .git/refs/
         echo fetch
         git fetch --tags
