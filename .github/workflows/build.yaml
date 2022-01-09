@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      GPG_KEY_IDS: 68D1F79834E9EEE8DBA70F5E9682378BBACEEDD1
     # timeout-minutes: 20
     # permissions:
     #   contents: read
@@ -38,7 +39,7 @@ jobs:
         git fetch --all --tags
         tree .git/refs/
         kids=${{ env.GPG_KEY_IDS }}
-        log=$(git log master HEAD~1..tags/v0.3.0 --show-signature)
+        log=$(git log tags/v0.3.0 --show-signature)
         [[ $log =~([0-9A-F]{40}) ]] && fingerprint=${BASH_REMATCH}
 
         if [[ " ${kids[*]} " =~ " ${fingerprint} " ]]; then
