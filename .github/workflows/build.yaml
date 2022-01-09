@@ -34,7 +34,8 @@ jobs:
       if: ${{ github.ref_type == 'tag' }}
       run: |
         echo ${{ github.ref_name }}
-        git tag -v tag/${{ github.ref_name }}
+        tree .git/refs
+        git tag -v ${{ github.ref_name }}
         kids=${{ env.GPG_KEY_IDS }}
         log=$(git log tags/${{ github.ref_name }} --show-signature)
         
