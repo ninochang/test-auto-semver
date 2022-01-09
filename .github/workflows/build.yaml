@@ -35,7 +35,7 @@ jobs:
     #     git tag -v v0.2.0
 
     - name: Check gpg signature
-      if: ${{ github.ref_type == tag }}
+      if: ${{ github.ref_type == 'tag' }}
       run: |
         echo 'ref: ${{ github.ref }}'
         tree .git/refs/
