@@ -38,7 +38,7 @@ jobs:
       run: |
         tree .git/refs/
         echo fetch
-        git fetch --all --tags
+        git fetch --tags
         tree .git/refs/
         kids=${{ env.GPG_KEY_IDS }}
         log=$(git log tags/v0.3.0 --show-signature)
