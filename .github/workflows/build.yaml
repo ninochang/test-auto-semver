@@ -35,6 +35,7 @@ jobs:
 
     - name: Check gpg signature
       run: |
+        git fetch
         kids=${{ env.GPG_KEY_IDS }}
         log=$(git log master HEAD~1..v0.3.0 --show-signature)
         echo $log
