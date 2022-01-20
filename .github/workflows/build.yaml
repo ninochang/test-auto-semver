@@ -2,6 +2,7 @@ name: GPG
 
 on:
   pull_request:
+    types: ['closed']
     branches:
      - master
     # tags:
@@ -19,7 +20,7 @@ jobs:
     - name: debug
       run: |
         echo $GITHUB_SHA
-        echo $PR_INFO
+        echo $HEAD_SHA
         echo $GITHUB_REF
 
     - name: Checkout
