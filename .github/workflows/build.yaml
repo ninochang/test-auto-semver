@@ -1,11 +1,11 @@
 name: GPG
 
 on:
-  push:
+  pull_request:
     branches:
      - master
-    tags:
-      - v*
+    # tags:
+    #   - v*
 
 jobs:
   build:
@@ -13,8 +13,15 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
       GPG_KEY_IDS: 68D1F79834E9EEE8DBA70F5E9682378BBACEEDD1
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
 
     steps:
+    - name: debug
+      run: |
+        echo $GITHUB_SHA
+        echo $PR_INFO
+        echo $GITHUB_REF
+
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -30,20 +37,20 @@ jobs:
     #     git tag
     #     git tag -v v0.2.0
 
-    - name: Check gpg signature
-      if: ${{ github.ref_type == 'tag' }}
-      run: |
-        echo ${{ github.ref_name }}
-        tree .git/refs
-        git tag -v ${{ github.ref_name }}
-        kids=${{ env.GPG_KEY_IDS }}
-        log=$(git log tags/${{ github.ref_name }} --show-signature)
+    # - name: Check gpg signature
+    #   if: ${{ github.ref_type == 'tag' }}
+    #   run: |
+    #     echo ${{ github.ref_name }}
+    #     tree .git/refs
+    #     git tag -v ${{ github.ref_name }}
+    #     kids=${{ env.GPG_KEY_IDS }}
+    #     log=$(git log tags/${{ github.ref_name }} --show-signature)
         
-        [[ $log =~([0-9A-F]{40}) ]] && fingerprint=${BASH_REMATCH}
+    #     [[ $log =~([0-9A-F]{40}) ]] && fingerprint=${BASH_REMATCH}
 
-        if [[ " ${kids[*]} " == " ${fingerprint} " ]]; then
-          echo 'true'  
-        else
-          echo 'false'
-        fi
+    #     if [[ " ${kids[*]} " == " ${fingerprint} " ]]; then
+    #       echo 'true'  
+    #     else
+    #       echo 'false'
+    #     fi
 
