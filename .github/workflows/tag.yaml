@@ -27,6 +27,8 @@ jobs:
         echo -n $GPG_SECRET_KEY_BIN | base64 --decode | gpg --import
 
         # setup git
+        git config --global user.email ${{ github.actor }}
+        git config --global user.name "CI"
         git config --global user.signingkey 94C68424484812EC
         git tag -f -s TAG_NAME
         git push --tag
