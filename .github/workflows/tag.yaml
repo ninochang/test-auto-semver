@@ -9,7 +9,7 @@ concurrency:
 
 jobs:
   auto-tag:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     env:
       GPG_SECRET_KEY: abc
     steps:
