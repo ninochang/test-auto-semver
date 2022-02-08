@@ -17,7 +17,7 @@ jobs:
     # - name: 
     #   run: |
     #     echo hello $GPG_SECRET_KEY
-    # - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
     - name: Auto tag
       run: |
         # export GPG_TTY=$(tty)
