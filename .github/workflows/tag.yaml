@@ -1,0 +1,35 @@
+name: auto-tag
+
+on:
+  push:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  auto-tag:
+    runs-on: ubuntu-lastest
+    env:
+      GPG_SECRET_KEY: ${{ secrets.GPG_SECRET_KEY }}
+    steps:
+    - name: Auto tag
+      run: |
+        // import private/public key
+        echo $GPG_SECRET_KEY > private.pgb
+        // apt-get install gnupg
+        gpg --import private.pgb
+
+        info=$(gh api /repos/${{ github.repository }}/commits/${{ github.sha }} | jq "{email:.commit.committer.email, verified: .verification.verified }")
+        verified=$(echo $info | jq .verified)
+        commiter_email=$(echo $info | jq .email)
+
+        ## now loop through the above array
+        for i in "${($GITHUB_TAGGER)[@]}"
+        do
+          if [[ $i == $commiter_email ]]; then
+            git tag -f -s TAG_NAME
+            git push --tag
+          break
+          fi
+        done
