@@ -18,16 +18,15 @@ jobs:
     #     echo hello $GPG_SECRET_KEY
     - name: Auto tag
       run: |
-        // import private/public key
+        # import private/public key
         echo $GPG_SECRET_KEY > private.pgb
-        // apt-get install gnupg
+        # apt-get install gnupg
         gpg --import private.pgb
 
         info=$(gh api /repos/${{ github.repository }}/commits/${{ github.sha }} | jq "{email:.commit.committer.email, verified: .verification.verified }")
         verified=$(echo $info | jq .verified)
         commiter_email=$(echo $info | jq .email)
 
-        ## now loop through the above array
         for i in "${($GITHUB_TAGGER)[@]}"
         do
           if [[ $i == $commiter_email ]]; then
