@@ -27,8 +27,8 @@ jobs:
         now=$(date +"%s")
 
         # setup git
-        git config --global user.email ${{ github.actor }}
-        git config --global user.name "CI"
+        git config --global user.email nino.chang@swag.live
+        git config --global user.name "ninochang"
         git config --global user.signingkey 94C68424484812EC
         git tag -f -s "tag-$now" -m "tag-$now-payload"
         git push -f --tag
